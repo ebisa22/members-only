@@ -1,0 +1,39 @@
+{
+  "name": "members-only",
+  "version": "1.0.0",
+  "description": "A private members-only messaging application",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "echo 'No build script needed'",
+    "dev": "node --watch --env-file-if-exists=.env app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:seed": "node --env-file-if-exists=.env db/populatedb.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebisa22/members-only.git"
+  },
+  "keywords": [
+    "express",
+    "members-only",
+    "the-odin-project"
+  ],
+  "author": "Ebisa Eshetu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebisa22/members-only/issues"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-pg-simple": "^10.0.0",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.23.1"
+  }
+}
