@@ -1,0 +1,433 @@
+
+.messages-page {
+    width: min(100% - 48px, 1050px);
+    margin: 65px auto 90px;
+}
+
+.eyebrow {
+    display: block;
+    color: var(--color-accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 38px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.messages-heading h1 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.15;
+}
+
+.messages-heading p {
+    margin-top: 12px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-avatar,
+.author-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.profile-avatar {
+    width: 46px;
+    height: 46px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    font-size: 20px;
+}
+
+.profile-details,
+.author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-username,
+.author-name {
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.profile-role,
+.author-username {
+    color: var(--color-text-muted);
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.guest-label,
+.visitor-author {
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.messages-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 35px 0 25px;
+}
+
+.messages-toolbar h2 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.65rem;
+}
+
+.message-count {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+.message-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.button-primary,
+.button-secondary {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 43px;
+    padding: 0 17px;
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.button-primary {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.button-primary:hover {
+    background: var(--color-primary-hover);
+}
+
+.button-secondary {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+}
+
+.button-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.message-card {
+    padding: 25px 27px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+}
+
+.message-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 19px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.message-author {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.author-avatar {
+    width: 37px;
+    height: 37px;
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+    font-size: 16px;
+}
+
+.author-date {
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.message-date {
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.message-content {
+    padding: 21px 0 7px;
+}
+
+.message-content h3 {
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+}
+
+.message-content p {
+    color: var(--color-text);
+    font-size: 13px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.message-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-border);
+}
+
+.delete-button {
+    border: none;
+    background: transparent;
+    color: #a14c4c;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: #773535;
+    text-decoration: underline;
+}
+
+.empty-state {
+    padding: 75px 20px;
+    text-align: center;
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: 7px;
+}
+
+.empty-state h2 {
+    margin-bottom: 10px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+}
+
+.empty-state p {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+/* Modals */
+
+.site-modal {
+    width: min(100% - 32px, 480px);
+    max-width: 480px;
+    max-height: 90vh;
+    margin: auto;
+    padding: 30px;
+    overflow-y: auto;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 9px;
+}
+
+.site-modal::backdrop {
+    background: rgba(35, 27, 32, 0.55);
+    backdrop-filter: blur(3px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.modal-header .eyebrow {
+    margin-bottom: 8px;
+}
+
+.modal-header h2 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 2rem;
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-surface-alt);
+    color: var(--color-text-muted);
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+}
+
+.modal-description {
+    margin: -10px 0 22px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.modal-form label {
+    margin-top: 7px;
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.modal-form input,
+.modal-form textarea {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    outline: none;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+    border-color: var(--color-accent);
+}
+
+.modal-form textarea {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 17px;
+}
+
+.form-error {
+    margin: -8px 0 18px;
+    padding: 12px 14px;
+    border: 1px solid #e7caca;
+    border-radius: 5px;
+    background: #f9eeee;
+    color: #963f3f;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+    .messages-page {
+        width: min(100% - 36px, 1050px);
+        margin-top: 42px;
+    }
+
+    .messages-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    .messages-heading h1 {
+        font-size: 2.7rem;
+    }
+
+    .messages-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .messages-page {
+        width: calc(100% - 28px);
+    }
+
+    .messages-heading h1 {
+        font-size: 2.3rem;
+    }
+
+    .message-card {
+        padding: 19px;
+    }
+
+    .message-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .message-actions {
+        width: 100%;
+    }
+
+    .message-actions > * {
+        flex: 1;
+    }
+
+    .site-modal {
+        padding: 22px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.7rem;
+    }
+}

@@ -13,7 +13,6 @@ const createUsersTable = `
         is_admin BOOLEAN NOT NULL DEFAULT FALSE
     );
 `;
-
 const createMessagesTable = `
     CREATE TABLE IF NOT EXISTS messages (
         message_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

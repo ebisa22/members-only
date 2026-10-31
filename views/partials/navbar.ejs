@@ -1,18 +1,19 @@
 <header class="site-header">
-    <nav class="navbar">
-        <a href="/" class="navbar-brand">
-            <span class="brand-mark">M</span>
-            <span>Members<span class="brand-accent">Only</span></span>
-        </a>
 
-        <div class="navbar-links">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/messages" class="nav-link">Messages</a>
-        </div>
+<nav class="navbar">
+    <a href="/" class="nav-brand">Members Only</a>
+    <div class="nav-links">
+        <a href="/messages">Messages</a>
+        <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+            <span class="nav-username"><%= currentUser.username %></span>
 
-        <div class="navbar-actions">
-            <a href="/login" class="nav-login">Log in</a>
-            <a href="/signup" class="nav-signup">Join the club</a>
-        </div>
-    </nav>
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-btn">Log out</button>
+            </form>
+        <% } else { %>
+            <a href="/login">Log in</a>
+            <a href="/signup" class="signup-link">Sign up</a>
+        <% } %>
+    </div>
+</nav>
 </header>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', { title: 'Page Not Found', cssPath: 'error.css' }) %>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <main class="error-page">
+        <section class="error-content">
+            <span class="error-code">404</span>
+            <span class="error-eyebrow">PAGE NOT FOUND</span>
+
+            <h1>This page doesn't exist.</h1>
+
+            <p>
+                The page you're looking for may have been moved,
+                deleted, or the address may be incorrect.
+            </p>
+
+            <div class="error-actions">
+                <a href="/messages" class="primary-btn">Back to messages</a>
+                <a href="/" class="secondary-btn">Go home</a>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -16,7 +16,7 @@ const checkUsernameAvailability=async(value)=>{
    try{
      const user=await db.getUserByUsername(value);
      if(user)
-        return false
+        throw new Error("Username already exist");
      else
         return true
    } catch(err){
@@ -24,9 +24,13 @@ const checkUsernameAvailability=async(value)=>{
       throw err;
     }
 }
-const checkConfirmPassword=async (value,{req})=>{
-    return value === req.body.password
-}
+const checkConfirmPassword = async (value, { req }) => {
+  if (value !== req.body.password) {
+    throw new Error("Passwords don't match");
+  }
+
+  return true;
+};
 const validationFields = [
   body("first_name")
     .trim()

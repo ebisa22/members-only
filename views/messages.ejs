@@ -1,0 +1,245 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', {
+    title: 'Messages',
+    cssPath: 'messages.css'
+}) %>
+<body>
+<%- include('partials/navbar') %>
+
+<main class="messages-page">
+
+    <section class="messages-header">
+        <div class="messages-heading">
+            <span class="eyebrow">THE COMMUNITY</span>
+            <h1>Conversations</h1>
+            <p>A place for conversations worth having.</p>
+        </div>
+
+        <div class="messages-user-area">
+            <% if (currentUser) { %>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <%= currentUser.username.charAt(0).toUpperCase() %>
+                    </div>
+                    <div class="profile-details">
+                        <span class="profile-username"><%= currentUser.username %></span>
+                        <span class="profile-role"><%= role %></span>
+                    </div>
+                </div>
+            <% } else { %>
+                <span class="guest-label">Guest</span>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="messages-toolbar">
+        <div>
+            <h2>Community messages</h2>
+            <span class="message-count"><%= messages.length %> messages</span>
+        </div>
+
+        <div class="message-actions">
+            <% if (currentUser && role !== "admin") { %>
+                <button type="button" class="button-secondary"
+                    data-open-modal="join-modal">
+                    Become a member
+                </button>
+
+                <button type="button" class="button-secondary"
+                    data-open-modal="admin-modal">
+                    Become an admin
+                </button>
+            <% } %>
+
+            <% if (currentUser) { %>
+                <button type="button" class="button-primary"
+                    data-open-modal="new-message-modal">
+                    + New message
+                </button>
+            <% } else { %>
+                <a href="/signup" class="button-primary">
+                    Join the community
+                </a>
+            <% } %>
+        </div>
+    </section>
+
+    <section class="message-list">
+        <% if (messages.length === 0) { %>
+            <div class="empty-state">
+                <h2>No messages yet</h2>
+                <p>Be the first to start a conversation.</p>
+            </div>
+        <% } else { %>
+
+            <% messages.forEach(message => { %>
+                <article class="message-card">
+                    <div class="message-card-header">
+                        <div class="message-author">
+                            <% if (role !== "visitor") { %>
+                                <div class="author-avatar">
+                                    <%= message.username.charAt(0).toUpperCase() %>
+                                </div>
+                                <div class="author-details">
+                                    <span class="author-name">
+                                        <%= message.first_name %> <%= message.last_name %>
+                                    </span>
+                                    <span class="author-username">
+                                        <%= message.username %>
+                                    </span>
+                                </div>
+                            <% } else { %>
+                                <span class="visitor-author">Community member</span>
+                            <% } %>
+                        </div>
+
+                        <% if (role !== "visitor") { %>
+                            <time class="message-date">
+                                <%= new Date(message.timestamp).toLocaleString() %>
+                            </time>
+                        <% } %>
+                    </div>
+
+                    <div class="message-content">
+                        <h3><%= message.title %></h3>
+                        <p><%= message.text %></p>
+                    </div>
+
+                    <% if (role === "admin") { %>
+                        <div class="message-footer">
+                            <form method="POST"
+                                action="/messages/<%= message.message_id %>/delete">
+                                <button type="submit" class="delete-button">
+                                    Delete message
+                                </button>
+                            </form>
+                        </div>
+                    <% } %>
+                </article>
+            <% }) %>
+
+        <% } %>
+    </section>
+
+</main>
+
+<% if (currentUser) { %>
+
+    <!-- New message modal -->
+    <dialog class="site-modal" id="new-message-modal">
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">START A CONVERSATION</span>
+                <h2>New message</h2>
+            </div>
+            <button type="button" class="modal-close"
+                data-close-modal aria-label="Close">&times;</button>
+        </div>
+
+        <form method="POST" action="/messages" class="modal-form">
+            <label for="message-title">Title</label>
+            <input type="text" id="message-title" name="title"
+                placeholder="Give your message a title" required>
+
+            <label for="message-text">Message</label>
+            <textarea id="message-text" name="text" rows="6"
+                placeholder="What would you like to share?" required></textarea>
+
+            <div class="modal-actions">
+                <button type="button" class="button-secondary"
+                    data-close-modal>Cancel</button>
+                <button type="submit" class="button-primary">
+                    Publish message
+                </button>
+            </div>
+        </form>
+    </dialog>
+
+    <% if (role !== "admin") { %>
+
+        <!-- Membership modal -->
+        <dialog class="site-modal" id="join-modal"
+            <%= membershipError ? "open" : "" %>>
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">MEMBERSHIP</span>
+                    <h2>Become a member</h2>
+                </div>
+                <button type="button" class="modal-close"
+                    data-close-modal aria-label="Close">&times;</button>
+            </div>
+
+            <p class="modal-description">
+                Enter the membership passcode to join the club.
+            </p>
+
+            <% if (membershipError) { %>
+                <div class="form-error" role="alert">
+                    <%= membershipError %>
+                </div>
+            <% } %>
+
+            <form method="POST" action="/join" class="modal-form">
+                <label for="membership-passcode">Membership passcode</label>
+                <input type="password" id="membership-passcode"
+                    name="passcode" placeholder="Enter membership passcode"
+                    required>
+
+                <div class="modal-actions">
+                    <button type="button" class="button-secondary"
+                        data-close-modal>Cancel</button>
+                    <button type="submit" class="button-primary">
+                        Join the club
+                    </button>
+                </div>
+            </form>
+        </dialog>
+
+        <!-- Admin modal -->
+        <dialog class="site-modal" id="admin-modal"
+            <%= adminError ? "open" : "" %>>
+            <div class="modal-header">
+                <div>
+                    <span class="eyebrow">ADMINISTRATION</span>
+                    <h2>Become an admin</h2>
+                </div>
+                <button type="button" class="modal-close"
+                    data-close-modal aria-label="Close">&times;</button>
+            </div>
+
+            <p class="modal-description">
+                Enter the administrator passcode to receive administrative privileges.
+            </p>
+
+            <% if (adminError) { %>
+                <div class="form-error" role="alert">
+                    <%= adminError %>
+                </div>
+            <% } %>
+
+            <form method="POST" action="/become-admin" class="modal-form">
+                <label for="admin-passcode">Administrator passcode</label>
+                <input type="password" id="admin-passcode"
+                    name="passcode" placeholder="Enter administrator passcode"
+                    required>
+
+                <div class="modal-actions">
+                    <button type="button" class="button-secondary"
+                        data-close-modal>Cancel</button>
+                    <button type="submit" class="button-primary">
+                        Become an admin
+                    </button>
+                </div>
+            </form>
+        </dialog>
+
+    <% } %>
+<% } %>
+
+<%- include('partials/footer') %>
+
+<script src="/js/script.js" defer></script>
+</body>
+</html>

@@ -1,110 +1,107 @@
 .site-header {
     width: 100%;
-    background-color: var(--color-background);
+    background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
 }
 
 .navbar {
-    width: min(var(--container-width), calc(100% - 48px));
-    min-height: 82px;
-    margin-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 2rem;
 }
 
-.navbar-brand,
-.footer-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
+.nav-brand {
     color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: 23px;
+    font-family: "Playfair Display", serif;
+    font-size: 1.6rem;
     font-weight: 700;
+    text-decoration: none;
     white-space: nowrap;
 }
 
-.brand-mark {
-    width: 37px;
-    height: 37px;
-    display: grid;
-    place-items: center;
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    border-radius: 50%;
-    font-family: var(--font-heading);
-    font-size: 21px;
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.75rem;
 }
 
-.brand-accent {
+.nav-links a {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
     color: var(--color-accent);
 }
 
-.navbar-links,
-.navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-link,
-.nav-login {
+.nav-username {
     color: var(--color-text-muted);
-    font-size: 14px;
-    font-weight: 600;
-    transition: color 0.2s ease;
+    font-size: 0.9rem;
+    border-left: 1px solid var(--color-border);
+    padding-left: 1.5rem;
 }
 
-.nav-link:hover,
-.nav-login:hover {
+.nav-links form {
+    margin: 0;
+}
+
+.logout-btn {
+    padding: 0.65rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: transparent;
     color: var(--color-primary);
-}
-
-.navbar-actions {
-    gap: 22px;
-}
-
-.nav-signup {
-    padding: 11px 21px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
+    font: inherit;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: background-color 0.2s ease;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.nav-signup:hover {
+.logout-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.signup-link {
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    color: var(--color-surface) !important;
+}
+
+.signup-link:hover {
     background-color: var(--color-primary-hover);
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     .navbar {
-        min-height: 72px;
-        flex-wrap: wrap;
-        gap: 14px;
-        padding-block: 15px;
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
 
-    .navbar-brand {
-        font-size: 20px;
-    }
-
-    .navbar-links {
-        order: 3;
+    .nav-links {
         width: 100%;
-        justify-content: center;
-        padding-top: 12px;
-        border-top: 1px solid var(--color-border);
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 
-    .navbar-actions {
-        gap: 12px;
-    }
-
-    .nav-signup {
-        padding: 9px 13px;
+    .nav-username {
+        border-left: none;
+        padding-left: 0;
     }
 }
