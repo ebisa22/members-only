@@ -1,12 +1,12 @@
 import passport from "passport";
 import expressSession from "express-session";
 import connectPgSimple from "connect-pg-simple";
-import {Strategy} from "passport-local";
+import {Strategy as LocalStrategy} from "passport-local";
 import pool from "./db/pool.js";
 import db from "./db/query.js";
 import bcrypt from "bcryptjs";
 
-
+const pgSession = connectPgSimple(expressSession);
 const session = expressSession({
   secret:process.env.SESSION_SECRET,
   resave: false,
@@ -19,9 +19,8 @@ const session = expressSession({
     tableName:"session"
   })
 });
-const pgSession = connectPgSimple(session);
 
-const localStrategy=new Strategy(async(username,password,done)=>{
+const localStrategy=new LocalStrategy(async(username,password,done)=>{
     try{
     const user=await db.getUserByUsername(username);
     if(!user)
@@ -35,10 +34,8 @@ const localStrategy=new Strategy(async(username,password,done)=>{
       return done(err);
 }
 })
-passport.use(session);
+
 passport.use(localStrategy);
-
-
 passport.serializeUser(async(user,done)=>{
     done(null,user.user_id);
 })
@@ -55,4 +52,6 @@ passport.deserializeUser(async(user_id,done)=>{
     }
 })
 
+
+export {session,passport};
 

@@ -1,0 +1,116 @@
+
+.site-footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 55px 24px 22px;
+    background: #eee9df;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-main {
+    width: min(100%, var(--container-width));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "brand links"
+        "description links";
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 12px;
+}
+
+.footer-brand {
+    grid-area: brand;
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    width: fit-content;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 7px;
+    font-family: var(--font-heading);
+    font-size: 19px;
+}
+
+.brand-accent {
+    color: var(--color-accent);
+}
+
+.footer-description {
+    grid-area: description;
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.footer-links {
+    grid-area: links;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-bottom {
+    width: min(100%, var(--container-width));
+    margin: 38px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        padding: 40px 20px 20px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "brand"
+            "description"
+            "links";
+        gap: 15px;
+    }
+
+    .footer-links {
+        justify-content: flex-start;
+        gap: 22px;
+        margin-top: 8px;
+    }
+
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+        margin-top: 28px;
+    }
+}

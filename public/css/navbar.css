@@ -1,0 +1,110 @@
+.site-header {
+    width: 100%;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {
+    width: min(var(--container-width), calc(100% - 48px));
+    min-height: 82px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.navbar-brand,
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 23px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.brand-mark {
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    border-radius: 50%;
+    font-family: var(--font-heading);
+    font-size: 21px;
+}
+
+.brand-accent {
+    color: var(--color-accent);
+}
+
+.navbar-links,
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link,
+.nav-login {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-login:hover {
+    color: var(--color-primary);
+}
+
+.navbar-actions {
+    gap: 22px;
+}
+
+.nav-signup {
+    padding: 11px 21px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.nav-signup:hover {
+    background-color: var(--color-primary-hover);
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        min-height: 72px;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-block: 15px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        padding-top: 12px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .navbar-actions {
+        gap: 12px;
+    }
+
+    .nav-signup {
+        padding: 9px 13px;
+    }
+}

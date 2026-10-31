@@ -28,9 +28,22 @@ const getUserById=async(id)=>{
         throw err;
     }
 }
+const createUser=async (user)=>{
+    const SQL = `
+    INSERT INTO users (first_name,last_name,username,password,security_question,security_answer) VALUES 
+    ($1,$2,$3,$4,$5,$6)
+    `;
+    try{
+        await pool.query(SQL,[user.first_name,user.last_name,user.username,user.password,user.security_question,user.security_answer]);
+    }catch(err){
+        console.error(err);
+        throw err;
+    }
+}
 
 
 export default {
     getUserByUsername,
-    getUserById
+    getUserById,
+    createUser
 }

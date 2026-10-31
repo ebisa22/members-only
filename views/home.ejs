@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('partials/head', { title: 'Home', cssPath: 'home.css' }) %>
+<body>
+<%- include('partials/navbar') %>
+
+<main class="home-page">
+    <section class="hero-section">
+        <div class="container hero-content">
+            <span class="hero-eyebrow">
+                A COMMUNITY OF ITS OWN
+            </span>
+
+            <h1>
+                Conversations<br>
+                worth having.<br>
+                <span>People worth hearing.</span>
+            </h1>
+
+            <p class="hero-description">
+                A place to share your thoughts, discover different
+                perspectives, and connect through meaningful conversations.
+                Join the community and be part of it.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/signup" class="hero-primary-btn">
+                    Join the community <span>&rarr;</span>
+                </a>
+
+                <a href="/login" class="hero-secondary-btn">
+                    Already a member? Log in
+                </a>
+            </div>
+
+            <div class="hero-note">
+                <span class="note-line"></span>
+                Open to everyone. The conversation is better together.
+            </div>
+        </div>
+    </section>
+
+    <section class="community-section">
+        <div class="container community-content">
+            <div class="community-heading">
+                <span class="section-eyebrow">THE IDEA BEHIND IT</span>
+                <h2>
+                    Not another place<br>
+                    to just <span>scroll.</span>
+                </h2>
+            </div>
+
+            <div class="community-details">
+                <p>
+                    Some of the best conversations happen when people
+                    have the space to express themselves and the chance
+                    to hear from others.
+                </p>
+
+                <p>
+                    Members Only brings those conversations together.
+                    Share ideas, contribute your perspective, and get
+                    to know the people behind the words.
+                </p>
+
+                <a href="/signup" class="community-link">
+                    Find your place here <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

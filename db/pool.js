@@ -1,4 +1,3 @@
-import { urlencoded } from "express";
 import { Pool } from "pg";
 
 const pool=new Pool({
