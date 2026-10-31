@@ -1,9 +1,9 @@
 const getLoginPage = async (req, res) => {
-  res.render("login", {
-    errors: {},
-    formData: {},
-    securityQuestions,
-  });
+res.render("login", {
+  errorMessage: null,
+  errors: {},
+  formData: {},
+});
 };
 
 export default getLoginPage;
